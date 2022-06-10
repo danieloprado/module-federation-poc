@@ -4,15 +4,31 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "*"
+    "src/*",
+    "src/modules/*"
   ],
   "scripts": {
     "wipe": "rm -fr node_modules packages/**/node_modules",
     "build": "yarn workspaces run build",
-    "start": "concurrently \"wsrun --parallel start\""
+    "lint": "eslint src --ext js,ts,tsx",
+    "start": "yarn ultra -r start"
   },
   "dependencies": {
-    "concurrently": "^5.2.0",
-    "wsrun": "^5.2.1"
+  },
+  "devDependencies": {
+    "@eduzz/eslint-config-houston": "^0.47.10",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-eslint-plugin": "^4.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-sonarjs": "^0.13.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint": "8.17.0",
+    "prettier": "^2.6.2",
+    "ultra-runner": "3.10.5"
   }
 }
