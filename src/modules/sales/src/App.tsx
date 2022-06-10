@@ -7,4 +7,5 @@ const App = () => (
     <div>Language: TypeScript</div>
   </div>
 );
+
 ReactDOM.render(<App />, document.getElementById('app'));

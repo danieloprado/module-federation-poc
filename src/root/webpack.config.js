@@ -2,65 +2,19 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const deps = require('./package.json').dependencies;
+const sharedConfig = require(__dirname + '/../webpack.shared.config');
+
+const deps = require(__dirname + '/../../package.json').dependencies;
 
 module.exports = {
-  output: {
-    publicPath: 'http://localhost:3000/'
-  },
-
-  resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json']
-  },
-
-  devServer: {
-    port: 3000,
-    historyApiFallback: true
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.m?js/,
-        type: 'javascript/auto',
-        resolve: {
-          fullySpecified: false
-        }
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'react-svg-loader',
-            options: {
-              jsx: true // true outputs JSX tags
-            }
-          }
-        ]
-      }
-    ]
-  },
+  ...sharedConfig('myeduzzroot', 3000, __dirname),
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'producer-black-label',
+      name: 'myeduzzroot',
       filename: 'remoteEntry.js',
       remotes: {
-        myeduzzsales: 'index@http://localhost:3001/remoteEntry.js'
+        '@my-eduzz/sales': 'myeduzzsales@http://localhost:3001/remoteEntry.js'
       },
       exposes: {},
       shared: {

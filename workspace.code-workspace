@@ -1,0 +1,56 @@
+{
+	"folders": [
+		{
+			"name": "~",
+			"path": "."
+		},
+		{
+			"name": "root",
+			"path": "./src/root"
+		},
+		{
+			"name": "sales",
+			"path": "./src/modules/sales"
+		}
+	],
+	"settings": {
+			"typescript.tsdk": "node_modules/typescript/lib",
+			"editor.formatOnPaste": false,
+			"editor.formatOnSave": false,
+			"editor.formatOnType": false,
+			"eslint.validate": [
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact"
+			],
+			"files.exclude": {
+				".vscode": true,
+				"**/node_modules": true,
+				"**/*.js": {
+					"when": "$(basename).ts"
+				},
+				"**/*?.js": {
+					"when": "$(basename).tsx"
+				},
+				"**/*.lock.json": true,
+				"**/.DS_Store": true,
+				"**/.git": true,
+				"**/.svn": true,
+				"**/.tmp": true,
+				"**/bin/**": true,
+				"**/obj/**": true,
+				"tsconfig.tsbuildinfo": true
+			},
+			"editor.codeActionsOnSave": {
+				"source.fixAll.eslint": true
+			},
+			"editor.rulers": [
+				{
+					"column": 120,
+					"color": "#fd3e3e78"
+				}
+			]
+		
+	}
+}
