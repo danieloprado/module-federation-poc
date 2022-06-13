@@ -1,0 +1,13 @@
+version: 1
+task_definition:
+  task_execution_role: arn:aws:iam::343892332509:role/ecsTaskExecutionRole
+  services:
+    api:
+      #cpu_shares: 128
+      #Hard memory limit
+      #mem_limit: 128m
+      #Soft memory limit
+      mem_reservation: 128M
+      secrets:
+        - value_from: arn:aws:secretsmanager:us-east-1:343892332509:secret:prod/eduzz-mobile-Tz0XMl
+          name: EDUZZ_MOBILE_SECRETS

@@ -3,18 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
+    "back",
     "front",
     "front/src/*",
     "front/src/modules/*"
   ],
   "scripts": {
-    "wipe": "rm -fr node_modules packages/**/node_modules",
     "build": "yarn workspaces run build",
     "lint": "eslint src --ext js,ts,tsx",
     "start": "yarn ultra -r start"
-  },
-  "dependencies": {
-   
   },
   "devDependencies": {
     "@eduzz/eslint-config-houston": "^0.47.10",

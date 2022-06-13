@@ -1,0 +1,18 @@
+#Task name 
+task: "eduzz-fidic-agreement"
+#Port being exposed by the service
+port: 5000
+#Service name in ECS
+service: "svc-eduzz-fidic-agreement"
+#ECS Cluster name https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters
+cluster: "PRODUTOS"
+#Target group ARN in EC2 https://console.aws.amazon.com/ec2/home?region=us-east-1#TargetGroups:sort=targetGroupName
+target: "arn:aws:elasticloadbalancing:us-east-1:343892332509:targetgroup/tgt-eduzz-fidic-agreement/2d9eff65bedb3776"
+#If This flag is enabled, the deploy will only update the task https://console.aws.amazon.com/ecs/home?region=us-east-1#/taskDefinitions
+#onlyUpdateTask: false
+#Number of instances for the service
+scale: 2
+#Number of days for log retention
+logRetention: 30
+#Adding team for resource tagging
+team: eduzz-mobile

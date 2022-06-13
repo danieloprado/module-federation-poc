@@ -5,6 +5,10 @@
 			"path": "."
 		},
 		{
+			"name": "@back",
+			"path": "./back"
+		},
+		{
 			"name": "@front/root",
 			"path": "./front/src/root"
 		},

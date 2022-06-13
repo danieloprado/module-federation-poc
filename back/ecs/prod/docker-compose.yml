@@ -1,0 +1,14 @@
+version: '3'
+services: 
+  api:
+    image: 343892332509.dkr.ecr.us-east-1.amazonaws.com/eduzz-fidic-agreement:master
+    env_file:
+      - ./.env
+    ports:
+    - 0:5000
+    logging:
+      driver: awslogs
+      options: 
+        awslogs-group: /ecs/tsk-eduzz-fidic-agreement
+        awslogs-region: us-east-1
+        awslogs-stream-prefix: ecs
