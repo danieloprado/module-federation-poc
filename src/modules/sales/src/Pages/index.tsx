@@ -1,16 +1,18 @@
-import { useRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import Details from './Details';
 import List from './List';
 
-const Routes = () => {
-  const routes = useRoutes([
-    {
-      path: '/',
-      element: <List />
-    }
-  ]);
-
-  return <>{routes}</>;
+const Pages = () => {
+  return (
+    <>
+      <h1>Sales Module</h1>
+      <Routes>
+        <Route path='/' element={<List />} />
+        <Route path='/detalhes' element={<Details />} />
+      </Routes>
+    </>
+  );
 };
 
-export default Routes;
+export default Pages;

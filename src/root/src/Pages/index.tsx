@@ -1,6 +1,6 @@
 import { lazy, memo } from 'react';
 
-import { useRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Dashboard from './Dashboard';
 
@@ -9,22 +9,19 @@ import FallbackHandler from '@/FallbackHandler';
 const SalesModule = lazy(() => import('@my-eduzz/sales'));
 
 const Pages = memo(() => {
-  const routes = useRoutes([
-    {
-      path: '/',
-      element: <Dashboard />
-    },
-    {
-      path: '/vendas',
-      element: (
-        <FallbackHandler>
-          <SalesModule />
-        </FallbackHandler>
-      )
-    }
-  ]);
-
-  return <>{routes}</>;
+  return (
+    <Routes>
+      <Route path='/' element={<Dashboard />} />
+      <Route
+        path='/vendas/*'
+        element={
+          <FallbackHandler>
+            <SalesModule />
+          </FallbackHandler>
+        }
+      />
+    </Routes>
+  );
 });
 
 export default Pages;
