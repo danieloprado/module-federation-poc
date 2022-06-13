@@ -1,0 +1,46 @@
+{
+  "name": "@my-eduzz/front",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@eduzz/apps-toolbar-react": "1.1.31",
+    "@eduzz/houston-forms": "^0.47.10",
+    "@eduzz/houston-hooks": "^0.47.10",
+    "@eduzz/houston-icons": "^0.47.10",
+    "@eduzz/houston-styles": "^0.47.10",
+    "@eduzz/houston-ui": "^0.47.10",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-transform-react-jsx": "^7.17.12",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@types/react-dom": "^18",
+    "@types/react": "^18",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss-loader": "^7.0.0",
+    "postcss": "^8.4.14",
+    "react-refresh": "^0.13.0",
+    "react-svg-loader": "^3.0.3",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2",
+    "webpack": "^5.73.0"
+  },
+  "resolutions": {
+    "react": "^18",
+    "react-dom": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18"
+  }
+}

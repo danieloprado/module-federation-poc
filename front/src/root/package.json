@@ -1,9 +1,9 @@
 {
-  "name": "@my-eduzz/module-sales",
+  "name": "@my-eduzz/front-root",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --open --mode development"
   }
 }

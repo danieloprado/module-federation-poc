@@ -5,12 +5,12 @@
 			"path": "."
 		},
 		{
-			"name": "root",
-			"path": "./src/root"
+			"name": "@front/root",
+			"path": "./front/src/root"
 		},
 		{
-			"name": "sales",
-			"path": "./src/modules/sales"
+			"name": "@front/sales",
+			"path": "./front/src/modules/sales"
 		}
 	],
 	"settings": {
