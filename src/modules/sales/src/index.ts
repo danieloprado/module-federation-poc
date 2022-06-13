@@ -1,3 +1,8 @@
-import List from './components/List';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-expect-error
+global.$RefreshReg$ = () => null;
+// @ts-expect-error
+global.$RefreshSig$ = () => () => null;
 
-export default List;
+// @ts-ignore
+import('./App');

@@ -1,4 +1,4 @@
-import React, { ErrorInfo } from 'react';
+import { Component, ErrorInfo, Suspense } from 'react';
 
 type State = {
   hasError: boolean;
@@ -8,7 +8,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default class FallbackHandler extends React.Component<Props, State> {
+export default class FallbackHandler extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -27,6 +27,6 @@ export default class FallbackHandler extends React.Component<Props, State> {
       return <p>Ocorreu um erro</p>;
     }
 
-    return <React.Suspense fallback={<div>Loading...</div>}>{this.props.children}</React.Suspense>;
+    return <Suspense fallback={<div>Loading...</div>}>{this.props.children}</Suspense>;
   }
 }

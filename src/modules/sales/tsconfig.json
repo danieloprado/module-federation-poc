@@ -1,18 +1,23 @@
 {
-  "compilerOptions": {
-		"jsx": "react-jsx",
-		"target": "esnext",
-		"moduleResolution": "node",
-		"allowJs": true,
-		"strict": true,
-		"isolatedModules": true,
-		"esModuleInterop": true,
-		"rootDir": "src",
-		"outDir": "build",
-		"declaration": true,
-  	"emitDeclarationOnly": true,
-	},
-	"include": [
-		"src"
-	]
+	"compilerOptions": {
+	"jsx": "react-jsx",
+	"target": "esnext",
+	"module": "esnext",
+	"moduleResolution": "node",
+	"allowJs": true,
+	"noEmit": true,
+	"strict": true,
+	"isolatedModules": true,
+	"esModuleInterop": true,
+	"rootDir": "src",
+	"outDir": "build",
+	"baseUrl": ".",
+	"paths": {
+		"*": ["node_modules/*"],
+		"@/*": ["src/*"]
+	}
+},
+"include": [
+	"src"
+]
 }
