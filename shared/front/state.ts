@@ -1,5 +1,6 @@
 export interface IMyEduzzState {
   authToken?: string;
+  apiEndpoint?: string;
 }
 
 (window as any).__myEduzzState = (window as any).__myEduzzState ?? {};
