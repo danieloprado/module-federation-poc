@@ -5,6 +5,7 @@
   "workspaces": [
     "back",
     "front",
+    "shared",
     "front/src/*",
     "front/src/modules/*"
   ],

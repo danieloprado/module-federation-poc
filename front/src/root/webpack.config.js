@@ -19,6 +19,9 @@ module.exports = {
       exposes: {},
       shared: {
         ...deps,
+        '@my-eduzz/shared': {
+          singleton: true
+        },
         react: {
           singleton: true,
           requiredVersion: deps.react

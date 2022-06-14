@@ -5,6 +5,10 @@
 			"path": "."
 		},
 		{
+			"name": "@shared",
+			"path": "./shared"
+		},
+		{
 			"name": "@back",
 			"path": "./back"
 		},
@@ -37,6 +41,7 @@
 				"**/*?.js": {
 					"when": "$(basename).tsx"
 				},
+				"**/*?.d.ts": true,
 				"**/*.lock.json": true,
 				"**/.DS_Store": true,
 				"**/.git": true,

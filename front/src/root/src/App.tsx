@@ -1,3 +1,4 @@
+import { setup } from '@my-eduzz/shared/front';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -7,6 +8,8 @@ import Pages from './Pages';
 
 import theme from '@/assets/theme';
 import Layout from '@/Layout';
+
+setup();
 
 const App = () => (
   <ThemeProvider theme={theme}>

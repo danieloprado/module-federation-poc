@@ -5,5 +5,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development"
+  },
+  "dependencies": {
+    "@my-eduzz/shared": "*"
   }
 }
