@@ -6,7 +6,7 @@ import Dashboard from './Dashboard';
 
 import FallbackHandler from '@/FallbackHandler';
 
-const SalesModule = lazy(() => import('@my-eduzz/sales'));
+const SalesModule = lazy(() => new Promise(resolve => setTimeout(() => resolve(import('@my-eduzz/sales')), 3000)));
 
 const Pages = memo(() => {
   return (

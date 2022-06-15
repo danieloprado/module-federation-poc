@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "yarn tsc -p ./tsconfig.json --watch",
-    "pre-commit": "yarn tsc -p ./tsconfig.json --noEmit"
+    "pre-commit": "yarn tsc -p ./tsconfig.json --noEmit",
+    "build:docker": "yarn tsc -p ./tsconfig.json"
   },
   "dependencies": {
     "axios": "0.27.2"

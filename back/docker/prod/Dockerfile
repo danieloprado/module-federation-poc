@@ -10,9 +10,8 @@ COPY . /app
 RUN set -x \
     && apk --no-cache add git \
     && yarn \
-    && cd back \
-    # && yarn test \
-    && yarn build
+    && (cd shared && yarn build:docker)
+    && (cd back && yarn build)
 
 FROM node:16-alpine
 
