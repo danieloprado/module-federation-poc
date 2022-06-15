@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const childProccess = require('child_process');
-const fs = require('fs');
 
 const inquirer = require('inquirer');
 
@@ -13,19 +12,55 @@ const args = process.argv
     return [...acc, ...arg.replace('-', '').split('')];
   }, []);
 
+const excludeProject = ['@my-eduzz/front'];
+
 async function init() {
   const result = childProccess.execSync('yarn workspaces info', { encoding: 'utf-8' });
-  const projects = Array.from(new Set(result.match(/(@.+)\"/gim).map(r => r.replace('"', ''))));
+  const allProjects = Array.from(
+    new Set(
+      result
+        .match(/(@.+)\"/gim)
+        .map(r => r.replace('"', ''))
+        .filter(p => !excludeProject.includes(p))
+    )
+  );
 
-  const answers = await inquirer.prompt([
-    {
-      name: 'projects',
-      type: 'checkbox',
-      default: projects,
-      choices: projects.map(p => ({ name: p, value: p })),
-      message: 'Qual projeto deseja iniciar?'
-    }
-  ]);
+  let projects = [...allProjects];
+
+  let skipAsk = false;
+
+  if (args.includes('all')) {
+    skipAsk = true;
+  }
+
+  if (args.includes('back')) {
+    skipAsk = true;
+    projects = projects.filter(p => p.includes('back'));
+  }
+
+  if (args.includes('front')) {
+    skipAsk = true;
+    projects = projects.filter(p => p.includes('front') || p.includes('shared'));
+  }
+
+  if (!skipAsk) {
+    const answers = await inquirer.prompt([
+      {
+        name: 'projects',
+        type: 'checkbox',
+        default: allProjects,
+        validate: a => (a.length > 0 ? true : 'Selecione ao menos 1.'),
+        choices: allProjects.map(p => ({
+          name: `${p}${p === '@my-eduzz/shared' ? ' (só desmarque se já tiver sido iniciado)' : ''}`,
+          value: p
+        })),
+        message: 'Qual projeto deseja iniciar?'
+      }
+    ]);
+    projects = answers.projects;
+  }
+
+  await spawn('yarn', ['ultra', ...projects.reduce((a, p) => [...a, '--filter', p], []), '-r', 'start']);
 }
 
 async function spawn(command, args) {

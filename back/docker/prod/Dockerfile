@@ -10,7 +10,8 @@ COPY . /app
 RUN set -x \
     && apk --no-cache add git \
     && yarn \
-    && yarn test \
+    && cd back \
+    # && yarn test \
     && yarn build
 
 FROM node:16-alpine
@@ -21,9 +22,8 @@ ENV VERSION=$VERSION
 
 WORKDIR /app
 
-COPY --from=0 /app/bin /app/bin
-COPY --from=0 /app/package.json /app
-COPY --from=0 /app/yarn.lock /app
+COPY --from=0 /app/back/bin /app/bin
+COPY --from=0 /app/back/package.json /app
 
 RUN set -x \
     && apk --no-cache add tzdata git \

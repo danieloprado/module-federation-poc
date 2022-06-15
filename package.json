@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "lint": "eslint . --ext js,ts,tsx",
-    "start": "yarn ultra -r start",
+    "start": "node ./scripts/start.js",
     "commit": "node ./scripts/git-check-files.js && git-cz",
     "postinstall": "sh ./scripts/postinstall.sh",
     "pre-commit": "yarn lint",

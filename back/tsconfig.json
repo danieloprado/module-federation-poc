@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "declaration": true,
+    "declaration": false,
     "allowSyntheticDefaultImports": true,
     "incremental": true,
     "strictNullChecks": false,
