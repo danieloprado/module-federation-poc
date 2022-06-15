@@ -43,7 +43,11 @@ async function bootstrap(): Promise<void> {
     SwaggerModule.setup('docs', app, document);
   }
 
-  await app.listen(configService.get('PORT', 3000), '0.0.0.0');
+  await app.listen(configService.get('PORT', 3000), '0.0.0.0', () => {
+    console.log('******************************');
+    console.log(`SERVER STARTED as ${configService.get('NODE_ENV')}`);
+    console.log('******************************');
+  });
 
   process.on('unhandledRejection', (reason, promise) => {
     console.error(reason);

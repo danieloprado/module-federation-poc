@@ -9,7 +9,8 @@ import Pages from './Pages';
 import theme from '@/assets/theme';
 import Layout from '@/Layout';
 
-setup();
+setup('');
+console.log(process.env.ENV);
 
 const App = () => (
   <ThemeProvider theme={theme}>

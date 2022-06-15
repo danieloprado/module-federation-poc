@@ -1,4 +1,6 @@
+import IAuthToken from '@my-eduzz/shared/interfaces/auth/token';
+
 export interface ITokenResponseDto {
-  user: any; // user
+  user: IAuthToken;
   token: string;
 }

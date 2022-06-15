@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack serve --open --mode development"
+    "start": "webpack serve --open --mode development",
+    "pre-commit": "yarn tsc -p ./tsconfig.json --noEmit"
   },
   "dependencies": {
     "@my-eduzz/shared": "*"

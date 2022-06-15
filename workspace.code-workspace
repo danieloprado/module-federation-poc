@@ -22,44 +22,60 @@
 		}
 	],
 	"settings": {
-			"typescript.tsdk": "node_modules/typescript/lib",
-			"editor.formatOnPaste": false,
-			"editor.formatOnSave": false,
-			"editor.formatOnType": false,
-			"eslint.validate": [
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"typescriptreact"
-			],
-			"files.exclude": {
-				".vscode": true,
-				"**/node_modules": true,
-				"**/*.js": {
-					"when": "$(basename).ts"
-				},
-				"**/*?.js": {
-					"when": "$(basename).tsx"
-				},
-				"**/*?.d.ts": true,
-				"**/*.lock.json": true,
-				"**/.DS_Store": true,
-				"**/.git": true,
-				"**/.svn": true,
-				"**/.tmp": true,
-				"**/bin/**": true,
-				"**/obj/**": true,
-				"tsconfig.tsbuildinfo": true
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"editor.formatOnPaste": false,
+		"editor.formatOnSave": false,
+		"editor.formatOnType": false,
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact"
+		],
+		"files.exclude": {
+			".vscode": true,
+			"**/node_modules": true,
+			"**/*.js": {
+				"when": "$(basename).ts"
 			},
-			"editor.codeActionsOnSave": {
-				"source.fixAll.eslint": true
+			"**/*?.js": {
+				"when": "$(basename).tsx"
 			},
-			"editor.rulers": [
-				{
-					"column": 120,
-					"color": "#fd3e3e78"
-				}
-			]
-		
-	}
+			"**/*?.d.ts": true,
+			"**/*.lock.json": true,
+			"**/.DS_Store": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.tmp": true,
+			"**/bin/**": true,
+			"**/obj/**": true,
+			"tsconfig.tsbuildinfo": true
+		},
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"editor.rulers": [
+			{
+				"column": 120,
+				"color": "#fd3e3e78"
+			}
+		]
+	},
+	"launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "address": "127.0.0.1",
+        "localRoot": "${workspaceFolder}",
+        "name": "Debug",
+        "port": 9229,
+        "remoteRoot": "/app",
+        "request": "attach",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "pwa-node"
+      }
+    ]
+  }
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-expect-error
+// @ts-ignore
 global.$RefreshReg$ = () => null;
-// @ts-expect-error
+// @ts-ignore
 global.$RefreshSig$ = () => () => null;
 
 // @ts-ignore

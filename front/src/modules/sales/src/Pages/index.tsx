@@ -6,7 +6,6 @@ import List from './List';
 
 const Pages = () => {
   const isAutheticated = useIsAutheticated();
-  console.log('render');
 
   return (
     <>

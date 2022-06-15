@@ -26,14 +26,21 @@ const LayoutC = ({ children }: { children: React.ReactNode }) => {
       </EduzzAppsToolbar>
 
       <Layout>
-        <Layout.Sidebar mobileVisible={menuVisible}>
+        <Layout.Sidebar mobileVisible={menuVisible} currentLocation={location.pathname}>
           <Layout.Sidebar.Menu>
             <Layout.Sidebar.MenuItem as={NavLink} to='/' icon={<DashboardRoundOutline />}>
               Dashboard
             </Layout.Sidebar.MenuItem>
-            <Layout.Sidebar.MenuItem as={NavLink} to='/vendas' icon={<AvatarOutline />}>
-              Vendas
-            </Layout.Sidebar.MenuItem>
+
+            <Layout.Sidebar.SubMenuItem label='Vendas' icon={<AvatarOutline />}>
+              <Layout.Sidebar.MenuItem as={NavLink} to='/vendas'>
+                Lista
+              </Layout.Sidebar.MenuItem>
+
+              <Layout.Sidebar.MenuItem as={NavLink} to='/vendas/detalhes'>
+                Detalhes
+              </Layout.Sidebar.MenuItem>
+            </Layout.Sidebar.SubMenuItem>
           </Layout.Sidebar.Menu>
         </Layout.Sidebar>
 

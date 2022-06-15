@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
@@ -11,7 +12,7 @@ const babelOptions = {
   plugins: ['@babel/transform-runtime']
 };
 
-module.exports = function (moduleName, port, path) {
+module.exports = function (moduleName, port, path, skipMF) {
   return {
     mode: isDevelopment ? 'development' : 'production',
     target: process.env.NODE_ENV !== 'production' ? 'web' : 'browserslist',
@@ -80,31 +81,36 @@ module.exports = function (moduleName, port, path) {
     },
 
     plugins: [
-      new ModuleFederationPlugin({
-        name: moduleName,
-        filename: 'remoteEntry.js',
-        remotes: {},
-        exposes: {
-          '.': path + '/src/remoteEntry'
-        },
-        shared: {
-          ...deps,
-          '@my-eduzz/shared': {
-            singleton: true
+      !skipMF &&
+        new ModuleFederationPlugin({
+          name: moduleName,
+          filename: 'remoteEntry.js',
+          remotes: {},
+          exposes: {
+            '.': path + '/src/remoteEntry'
           },
-          react: {
-            singleton: true,
-            requiredVersion: deps.react
-          },
-          'react-dom': {
-            singleton: true,
-            requiredVersion: deps['react-dom']
+          shared: {
+            ...deps,
+            '@my-eduzz/shared': {
+              singleton: true
+            },
+            react: {
+              singleton: true,
+              requiredVersion: deps.react
+            },
+            'react-dom': {
+              singleton: true,
+              requiredVersion: deps['react-dom']
+            }
           }
-        }
-      }),
+        }),
       isDevelopment && new ReactRefreshWebpackPlugin(),
       new HtmlWebPackPlugin({
         template: path + '/src/index.html'
+      }),
+      new Dotenv({
+        safe: true,
+        allowEmptyValues: true
       })
     ].filter(Boolean)
   };

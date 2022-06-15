@@ -11,24 +11,39 @@
   ],
   "scripts": {
     "build": "yarn workspaces run build",
-    "lint": "eslint src --ext js,ts,tsx",
-    "start": "yarn ultra -r start"
+    "lint": "eslint . --ext js,ts,tsx",
+    "start": "yarn ultra -r start",
+    "commit": "node ./scripts/git-check-files.js && git-cz",
+    "postinstall": "sh ./scripts/postinstall.sh",
+    "pre-commit": "yarn lint",
+    "check-pre-commit": "yarn ultra -r --root pre-commit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "devDependencies": {
-    "@eduzz/eslint-config-houston": "^0.47.10",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@eduzz/eslint-config-houston": "^0.47.12",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
+    "commitizen": "^4.2.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-eslint-plugin": "^4.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "eslint": "8.17.0",
-    "prettier": "^2.6.2",
+    "eslint": "^8.17.0",
+    "husky": "^8.0.1",
+    "inquirer": "^8.2.4",
+    "patch-package": "^6.4.7",
+    "prettier": "^2.7.0",
     "typescript": "^4.7.3",
-    "ultra-runner": "3.10.5"
+    "ultra-runner": "^3.10.5"
   }
 }

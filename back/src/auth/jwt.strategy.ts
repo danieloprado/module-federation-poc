@@ -2,9 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 
+import IAuthToken from '@my-eduzz/shared/interfaces/auth/token';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-
-import { IJwtUser } from './dto/jwt-user.dto';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
@@ -15,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
 
-  async validate(payload: IJwtUser): Promise<IJwtUser> {
+  async validate(payload: IAuthToken): Promise<IAuthToken> {
     return payload;
   }
 }

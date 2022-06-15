@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const sharedConfig = require(__dirname + '/../webpack.shared.config');
-
 const deps = require(__dirname + '/../../package.json').dependencies;
+const config = sharedConfig('myeduzzroot', 3000, __dirname, true);
 
 module.exports = {
-  ...sharedConfig('myeduzzroot', 3000, __dirname),
+  ...config,
 
   plugins: [
+    ...config.plugins,
     new ModuleFederationPlugin({
       name: 'myeduzzroot',
       filename: 'remoteEntry.js',
@@ -31,9 +31,6 @@ module.exports = {
           requiredVersion: deps['react-dom']
         }
       }
-    }),
-    new HtmlWebPackPlugin({
-      template: './src/index.html'
     })
   ]
 };

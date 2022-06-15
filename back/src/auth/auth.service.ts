@@ -1,48 +1,33 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+
+import IAuthToken from '@my-eduzz/shared/interfaces/auth/token';
 
 import { AccountsService } from '~/accounts/accounts.service';
 
-import { IJwtUser } from './dto/jwt-user.dto';
 import { LoginDTO } from './dto/login.dto';
 import { ITokenResponseDto } from './dto/token.response';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private accountsService: AccountsService,
-    private jwtService: JwtService,
-    private configService: ConfigService
-  ) {}
+  constructor(private accountsService: AccountsService, private jwtService: JwtService) {}
 
   async validate(validateTokenDto: LoginDTO): Promise<ITokenResponseDto> {
-    const validateResponse = await this.accountsService.validateToken(validateTokenDto.token);
-    if (!validateResponse?.user?.name) {
+    const accounts = await this.accountsService.validateToken(validateTokenDto.token);
+    if (!accounts?.user?.name) {
       throw new UnauthorizedException('Token invalido');
     }
 
-    const user: any = null; //TODO
-    return this.generateToken(user);
-  }
+    const user: IAuthToken = {
+      id: accounts.user.eduzzIds[0],
+      name: accounts.user.name,
+      email: accounts.user.email,
+      supportId: accounts.supportId
+    };
 
-  private async generateToken(user: any): Promise<ITokenResponseDto> {
     return {
       user,
-      token: this.generateJwtToken(user)
-    };
-  }
-
-  private generateJwtToken(user: any, expiresIn = this.configService.get('JWT_EXPIRES_IN', '15h')): string {
-    return this.jwtService.sign(this.generateJwtPayload(user), {
-      expiresIn
-    });
-  }
-
-  private generateJwtPayload(user: any): IJwtUser {
-    return {
-      id: user.id,
-      name: user.name
+      token: this.jwtService.sign(user)
     };
   }
 }
