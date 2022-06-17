@@ -12,23 +12,23 @@ const babelOptions = {
   plugins: ['@babel/transform-runtime']
 };
 
-module.exports = function (moduleName, port, path, skipMF) {
+module.exports = function (config) {
   return {
     mode: isDevelopment ? 'development' : 'production',
     target: process.env.NODE_ENV !== 'production' ? 'web' : 'browserslist',
     output: {
-      publicPath: 'http://localhost:' + port + '/'
+      publicPath: 'http://localhost:' + config.port + '/'
     },
 
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
       alias: {
-        '@': path + '/src/'
+        '@': config.path + '/src/'
       }
     },
 
     devServer: {
-      port: port,
+      port: config.port,
       hot: true,
       historyApiFallback: true,
       headers: {
@@ -76,13 +76,13 @@ module.exports = function (moduleName, port, path, skipMF) {
     },
 
     plugins: [
-      !skipMF &&
+      !config.skipMF &&
         new ModuleFederationPlugin({
-          name: moduleName,
+          name: config.name,
           filename: 'remoteEntry.js',
           remotes: {},
           exposes: {
-            '.': path + '/src/remoteEntry'
+            '.': config.path + '/src/remoteEntry'
           },
           shared: {
             ...deps,
@@ -101,7 +101,7 @@ module.exports = function (moduleName, port, path, skipMF) {
         }),
       isDevelopment && new ReactRefreshWebpackPlugin(),
       new HtmlWebPackPlugin({
-        template: path + '/src/index.html'
+        template: config.path + '/src/index.html'
       }),
       new Dotenv({
         safe: true,

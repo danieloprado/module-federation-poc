@@ -19,6 +19,10 @@
 		{
 			"name": "@front/sales",
 			"path": "./front/src/modules/sales"
+		},
+		{
+			"name": "@front/products",
+			"path": "./front/src/modules/products"
 		}
 	],
 	"settings": {

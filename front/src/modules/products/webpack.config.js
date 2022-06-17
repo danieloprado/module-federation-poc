@@ -2,8 +2,8 @@
 const sharedConfig = require(__dirname + '/../../webpack.shared.config');
 
 module.exports = sharedConfig({
-  name: 'myeduzzsales',
-  port: 3001,
+  name: 'myeduzzproducts',
+  port: 3002,
   path: __dirname,
   skipHot: true
 });

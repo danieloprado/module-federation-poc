@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import FallbackHandler from '@/FallbackHandler';
 
 const SalesModule = lazy(() => import('@my-eduzz/sales'));
+const ProductsModule = lazy(() => import('@my-eduzz/products'));
 
 const Pages = memo(() => {
   return (
@@ -17,6 +18,14 @@ const Pages = memo(() => {
         element={
           <FallbackHandler>
             <SalesModule />
+          </FallbackHandler>
+        }
+      />
+      <Route
+        path='/produtos/*'
+        element={
+          <FallbackHandler>
+            <ProductsModule />
           </FallbackHandler>
         }
       />

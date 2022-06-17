@@ -41,6 +41,16 @@ const LayoutC = ({ children }: { children: React.ReactNode }) => {
                 Detalhes
               </Layout.Sidebar.MenuItem>
             </Layout.Sidebar.SubMenuItem>
+
+            <Layout.Sidebar.SubMenuItem label='Produtos' icon={<AvatarOutline />}>
+              <Layout.Sidebar.MenuItem as={NavLink} to='/produtos'>
+                Lista
+              </Layout.Sidebar.MenuItem>
+
+              <Layout.Sidebar.MenuItem as={NavLink} to='/produtos/detalhes'>
+                Detalhes
+              </Layout.Sidebar.MenuItem>
+            </Layout.Sidebar.SubMenuItem>
           </Layout.Sidebar.Menu>
         </Layout.Sidebar>
 
