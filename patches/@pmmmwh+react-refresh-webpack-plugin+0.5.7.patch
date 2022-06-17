@@ -1,11 +1,15 @@
 diff --git a/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js b/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js
-index 9880757..553cc3a 100644
+index 9880757..a9c660a 100644
 --- a/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js
 +++ b/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,9 @@
  /* global __webpack_require__ */
 -var Refresh = require('react-refresh/runtime');
 +var Refresh = window.__sharing_react_refresh_runtime__ || require('react-refresh/runtime');
++
++if(!window.__sharing_react_refresh_runtime__) {
++  Object.assign(window, { __sharing_react_refresh_runtime__: Refresh });
++}
  
  /**
   * Extracts exports from a webpack module object.
