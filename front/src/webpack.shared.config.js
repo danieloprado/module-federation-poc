@@ -16,12 +16,6 @@ module.exports = function (moduleName, port, path, skipMF) {
   return {
     mode: isDevelopment ? 'development' : 'production',
     target: process.env.NODE_ENV !== 'production' ? 'web' : 'browserslist',
-
-    devServer: {
-      port,
-      hot: true
-    },
-
     output: {
       publicPath: 'http://localhost:' + port + '/'
     },
@@ -35,6 +29,7 @@ module.exports = function (moduleName, port, path, skipMF) {
 
     devServer: {
       port: port,
+      hot: true,
       historyApiFallback: true,
       headers: {
         'Access-Control-Allow-Origin': '*',

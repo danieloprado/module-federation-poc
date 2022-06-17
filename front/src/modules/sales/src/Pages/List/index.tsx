@@ -1,6 +1,6 @@
 const List = () => (
   <>
-    <h3>List do app</h3>
+    <h3>List do appd</h3>
 
     <p>This is my sales $$$</p>
   </>

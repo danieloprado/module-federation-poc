@@ -10,7 +10,6 @@ import theme from '@/assets/theme';
 import Layout from '@/Layout';
 
 setup('');
-console.log(process.env.ENV);
 
 const App = () => (
   <ThemeProvider theme={theme}>
